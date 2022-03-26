@@ -10,10 +10,10 @@
 </head>
 
     <body>
-        <div class="box" style="background-color:powderblue;">
+        <div class="box" style="background-color:#ff708b;">
             <div>
-                <form method="post" action="chatbox.php" sytle="align-items: center">
-                    <h1>Enter nickname</h1><br>
+                <form method="post" action="chatbox.php">
+                    <h1 id="header1">Enter nickname</h1><br>
                     <input type="text" name="nickname_field"><br>
                     
                     <input type="submit" name="OK">
