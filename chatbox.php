@@ -17,11 +17,15 @@ include("dbconnection.php");
         <ul>
             <?php
             $q = "SELECT * FROM users";
-            $data = mysqli_query($connection, $q) or die(mysql_error());
-            foreach($data as $user){
-                echo '<p>wtf</p>';
-            }
-
+            $result = mysqli_query($connection, $q) or die(mysql_error());
+            if ($result->num_rows > 0) {
+                while($row = $result->fetch_assoc()) {
+                   echo '<p>'.$row['name'].'</p>';
+                }
+             } else {
+                printf('No record found.<br />');
+             }
+             mysqli_free_result($result);
             ?>
         </ul>
 
