@@ -5,12 +5,20 @@
     src: url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
   }
 
+  body{
+      background-color: #ffd7d7;
+  }
 
+
+  #button{
+      background-color: #ffd7d7;
+      margin-top: 20px;
+  }
 
 
 #header1 {
     font-family: poppins;
-    
+    margin: 0em;
 }
 
 
@@ -18,4 +26,16 @@
    margin: auto;
     width: 50%;
     text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    border-radius: 15px;
+    background-color: #f0a6a6;
+}
+
+#field{
+    padding: 10px;
+    background-color: #ff708b;
+    border: #ebcbeb;
+    border-radius: 6px;
+    border-width: 10px;
 }

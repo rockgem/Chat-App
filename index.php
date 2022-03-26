@@ -10,13 +10,13 @@
 </head>
 
     <body>
-        <div class="box" style="background-color:#ff708b;">
+        <div class="box">
             <div>
                 <form method="post" action="chatbox.php">
                     <h1 id="header1">Enter nickname</h1><br>
-                    <input type="text" name="nickname_field"><br>
+                    <input id="field" type="text" name="nickname_field" autocomplete="off"><br>
                     
-                    <input type="submit" name="OK">
+                    <input id="button" type="submit" name="OK">
                 </form>
             </div>
         </div>
