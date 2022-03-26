@@ -13,7 +13,7 @@
         <div class="box" style="background-color:powderblue;">
             <div>
                 <form method="post" action="chatbox.php" sytle="align-items: center">
-                    <h1>Enter nickname</h1><br>
+                    <h1>Enter name</h1><br>
                     <input type="text" name="nickname_field"><br>
                     
                     <input type="submit" name="OK">
