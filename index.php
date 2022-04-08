@@ -3,6 +3,7 @@
 session_start();
 include('dbconnection.php');
 
+//comment
 ?>
 
 <!DOCTYPE html>
