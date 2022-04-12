@@ -9,7 +9,6 @@ $result = array();
 $message =$_POST['message'];
 $from = $_POST['from'];
 
-
 if(!empty($message) && !empty($from)){
     $sql = "INSERT INTO 'chats' ('message', 'from')  VALUES ('".$message."','".$from."')";
     $result['send_status'] = $db->query($sql);
