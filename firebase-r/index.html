@@ -10,16 +10,16 @@
 
 <body>
 
-  <form onsubmit="sendMessage();">
+  <form>
     <input id="message" placeholder="Enter message" autocomplete="off">
 
-    <input type="submit">
+    <button id="send_button" type="button">Send</button>
   </form>
 
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
-    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+    import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyAI6ly_ZksyUtERGLSXwK1pFJIEogyNoJ8",
@@ -35,17 +35,23 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
 
+    var name = prompt('enter name:')
+    
+
     function send_message() {
-      let db = getDatabase();
+      var db = getDatabase();
+      alert('added');
+      let message = document.getElementById('message').value;
 
-      set(ref(db, 'users'), {
-        username: 'eeeeeee'
+      push(ref(db, 'users'), { 
+        sender: message,
+        msg: message
       });
-
-      return false;
     }
 
-    send_message();
+
+    var btn = document.getElementById('send_button');
+    btn.addEventListener('click', send_message, false);
 
   </script>
 
