@@ -44,7 +44,7 @@
       let message = document.getElementById('message').value;
 
       push(ref(db, 'users'), { 
-        sender: message,
+        sender: name,
         msg: message
       });
     }
