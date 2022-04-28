@@ -1,35 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 <body>
-    <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
 
-    <div class = "chat">
-        <div class = "chat-window" id = "chat-window">
-          <ul id = "messages">
-            <li class="msg">
-              <span class = "msg-span">
-                <i class = "name">Host: </i>Hello and welcome to the chat!
-              </span>
-            </li>
-            <li class="msg my">
-              <span class = "msg-span">
-                <i class = "name">Me: </i>My message is on the right
-              </span>
-            </li>
-          </ul>
-          <form id = "messageForm" autocomplete="off">
-            <input type = "text" id = "msg-input" placeholder="Enter a message">
-            <button id = "msg-btn" type = "submit">Send</button>
-          </form>
-        </div>
-      </div>
+  <form onsubmit="sendMessage();">
+    <input id="message" placeholder="Enter message" autocomplete="off">
 
-    
+    <input type="submit">
+  </form>
+
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAI6ly_ZksyUtERGLSXwK1pFJIEogyNoJ8",
+      authDomain: "chat-app-50fbc.firebaseapp.com",
+      databaseURL: "https://chat-app-50fbc-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "chat-app-50fbc",
+      storageBucket: "chat-app-50fbc.appspot.com",
+      messagingSenderId: "450379239219",
+      appId: "1:450379239219:web:2706ed1e6eef7bab627846",
+      measurementId: "G-4MTNZ6X860"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    function send_message() {
+      let db = getDatabase();
+
+      set(ref(db, 'users'), {
+        username: 'ge',
+      });
+    }
+
+    send_message();
+
+  </script>
+
+
+
 </body>
+
 </html>
