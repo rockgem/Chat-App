@@ -19,7 +19,7 @@
 
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
-    import { getDatabase, ref, set, push } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+    import { getDatabase, ref, set, push, onValue, onChildAdded } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyAI6ly_ZksyUtERGLSXwK1pFJIEogyNoJ8",
@@ -34,20 +34,24 @@
 
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
+    var db = getDatabase();
 
     var name = prompt('enter name:')
-    
+
 
     function send_message() {
-      var db = getDatabase();
-      alert('added');
       let message = document.getElementById('message').value;
 
-      push(ref(db, 'users'), { 
+      push(ref(db, 'users'), {
         sender: name,
         msg: message
       });
     }
+
+    onChildAdded(ref(db, 'users'), (snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
+    });
 
 
     var btn = document.getElementById('send_button');
