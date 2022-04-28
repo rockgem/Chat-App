@@ -9,12 +9,21 @@
 </head>
 
 <body>
+  <div>
+    <div id="chatbox">
+      <ul id="list">
 
-  <form>
-    <input id="message" placeholder="Enter message" autocomplete="off">
+      </ul>
+    </div>
 
-    <button id="send_button" type="button">Send</button>
-  </form>
+    <form>
+      <input id="message" placeholder="Enter message" autocomplete="off">
+
+      <button id="send_button" type="button">Send</button>
+    </form>
+  </div>
+
+
 
 
   <script type="module">
@@ -51,6 +60,12 @@
     onChildAdded(ref(db, 'users'), (snapshot) => {
       const data = snapshot.val();
       console.log(data);
+
+      let st = '<li>';
+      st += data['sender'] + ": " + data['msg'];
+      st += '</li>';
+      document.getElementById('list').innerHTML += st;
+
     });
 
 
