@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div>
+    <div id="chatbox">
+      <ul id="list">
+
+      </ul>
+    </div>
+
+    <form>
+      <input id="message" placeholder="Enter message" autocomplete="off">
+
+      <button id="send_button" type="button">Send</button>
+    </form>
+  </div>
+
+
+
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+    import { getDatabase, ref, set, push, onValue, onChildAdded } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAI6ly_ZksyUtERGLSXwK1pFJIEogyNoJ8",
+      authDomain: "chat-app-50fbc.firebaseapp.com",
+      databaseURL: "https://chat-app-50fbc-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "chat-app-50fbc",
+      storageBucket: "chat-app-50fbc.appspot.com",
+      messagingSenderId: "450379239219",
+      appId: "1:450379239219:web:2706ed1e6eef7bab627846",
+      measurementId: "G-4MTNZ6X860"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    var db = getDatabase();
+
+    var name = prompt('enter name:')
+
+
+    function send_message() {
+      let message = document.getElementById('message').value;
+
+      push(ref(db, 'users'), {
+        sender: name,
+        msg: message
+      });
+    }
+
+    onChildAdded(ref(db, 'users'), (snapshot) => {
+      const data = snapshot.val();
+      console.log(data);
+
+      let st = '<li>';
+      st += data['sender'] + ": " + data['msg'];
+      st += '</li>';
+      document.getElementById('list').innerHTML += st;
+
+    });
+
+
+    var btn = document.getElementById('send_button');
+    btn.addEventListener('click', send_message, false);
+
+  </script>
+
+
+
+</body>
+
+</html>
